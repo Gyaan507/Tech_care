@@ -1,38 +1,359 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #f5f7fa;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.center-content {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loading,
+.error {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #333;
+}
+
+.error {
+  color: #e53935;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #00e1c3;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-primary:hover {
+  background-color: #00c4a9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.status-tag {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
 }
+
+.status-observation {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-cured {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.status-inactive {
+  background-color: #f5f5f5;
+  color: #757575;
+}
+
+.vital-card {
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vital-card.respiratory {
+  background-color: #f0f9ff;
+}
+
+.vital-card.temperature {
+  background-color: #fff1f2;
+}
+
+.vital-card.heart-rate {
+  background-color: #fff1f8;
+}
+
+.vital-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vital-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.vital-status {
+  font-size: 13px;
+}
+
+.vital-status.normal {
+  color: #16a34a;
+}
+
+.vital-status.lower {
+  color: #d32f2f;
+}
+
+.vital-status.higher {
+  color: #d32f2f;
+}
+
+.vital-title {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.vitals-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.patient-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.patient-item:hover {
+  background-color: #f0f4f8;
+}
+
+.patient-item.active {
+  background-color: #e0f7f4;
+}
+
+.patient-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+.patient-info {
+  flex: 1;
+}
+
+.patient-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.patient-details {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.patient-actions {
+  color: #cbd5e1;
+  cursor: pointer;
+}
+
+.lab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.lab-item:last-child {
+  border-bottom: none;
+}
+
+.lab-name {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.download-icon {
+  color: #7f8c8d;
+  cursor: pointer;
+}
+
+.download-icon:hover {
+  color: #2c3e50;
+}
+
+.error-banner {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #f5c6cb;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+.nav-link.active {
+  background-color: #00e1c3;
+  color: white;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: #1e293b;
+}
+
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 16px 0;
+}
+
+.detail-label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.show-all-btn {
+  background-color: #00e1c3;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Blood pressure chart styles */
+.bp-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.time-filter {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.bp-chart-container {
+  background-color: #f8f7ff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.reading-label {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.reading-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.reading-status {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.reading-status.higher {
+  color: #dc2626;
+}
+
+.reading-status.lower {
+  color: #dc2626;
+}
+
